@@ -12,7 +12,7 @@ import Error from './components/Error/Error'
 import Form from './components/Form/Form'
 import { useLocation } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
-import {favorites} from './components/favorites/favorites.jsx'
+import Favorites from './components/favorites/Favorites.jsx'
 function App () {
   const imagenexterna = 'https://images2.alphacoders.com/692/692166.jpg';
 const location = useLocation();
@@ -61,7 +61,7 @@ useEffect(() => {
     <Route path='/home' element={<Cards  characters={characters}
           onClose={onClose}/>} />
 <Route path='/about' element={<About/>} />
-<Route path='/favorites' element={<favorites/>} />
+<Route path='/favorites' element={<Favorites/>} />
 <Route path='/detail/:detailId' element={<Detail/>} />
 <Route path='*' element={<Error/>}/>
 

@@ -9,7 +9,8 @@ export default function Navbar({onSearch} ){
          <SearchBar   onSearch={onSearch}/>
             <Link className={styled.link} to='/about' >About</Link>
             <Link className={styled.link} to='/home' >Home</Link>
-          
+            <Link className={styled.link} to='/favorites' >Favorites</Link>
+            
         </div>
     )
 }
