@@ -1,0 +1,15 @@
+.Title {
+    color: azure;
+
+  }
+  .text{
+    color: beige;
+  }
+  .image{
+border-radius: 50%;
+border-color: red;
+border-style: groove;
+  }
+  .Background{
+    background-color: black;
+  }
