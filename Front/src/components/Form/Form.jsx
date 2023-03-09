@@ -27,8 +27,8 @@ export default function Form(props){
 props.login(userData);
     }
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className={styles.container}>
+            <form className={styles.container_form} onSubmit={handleSubmit}>
                 <label className={styles.text}>
                     Username:
                 </label >
@@ -44,7 +44,10 @@ props.login(userData);
                 onChange={handleInputChange} className={errors.password && styles.warning} />
             
                 <p className='danger'>{errors.subject}</p>
-                <button type="submit" >Login</button>
+                <button type="submit" > <span>
+                Login
+                </span>
+                </button>
             </form>
         </div>
     )

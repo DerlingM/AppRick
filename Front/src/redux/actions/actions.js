@@ -5,13 +5,13 @@ export function addFavorite(fav){
     return async function(dispatch) {
         try {
             let character = await axios.post('http://localhost:3001/rickandmorty/fav', fav)
-        console.log(character.data)
+        console.log('character solo',character)
             dispatch({
             type: ADD_FAVORITE,
             payload: character.data
         })
         } catch (error) {
-            console.log(fav)
+           // console.log(fav)
             throw new Error(error)
         
         }
@@ -47,7 +47,7 @@ export const   deleteFavorite= (id) => {
               payload: id,
             });
       } catch (error) {
-        console.log("error")
+        throw Error(error)
       }
     };
   };
@@ -69,7 +69,7 @@ export function getFavorites(){
     return async function(dispatch){
         try {
             const character = await axios.get('http://localhost:3001/rickandmorty/fav')
-        
+        console.log("actions getfavorites",character)
             return dispatch({
             type : "GET_FAVORITE",
             payload : character.data

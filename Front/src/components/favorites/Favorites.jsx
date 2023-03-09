@@ -1,15 +1,18 @@
 import { connect } from "react-redux"
-import { Card } from "../Card";
+import styled from './favorite.module.css'
+import  Card  from "../Card";
 import { orderCards, filterCards, getFavorites } from "../../redux/actions/actions"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react";
 
-export function Favorites ({ myFavorites }){
-
+export function Favorites ( props ){
+    const {myFavorites,onClose} = props
+console.log(myFavorites)
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getFavorites);
-    })
+        dispatch(getFavorites());
+        console.log("props de favorites",props)
+    },[])
 
     const handleDispatch = (e) => {
         const { name, value } = e.target;
@@ -23,7 +26,7 @@ export function Favorites ({ myFavorites }){
     }
 
     return(
-        <div>
+        <div className={styled.contain} >
             <div>
                 <select name='order' onClick={handleDispatch}>
                     <option value="Ascendente">Ascendente</option>
@@ -38,16 +41,22 @@ export function Favorites ({ myFavorites }){
                 </select>
             </div>
 
-
-            {myFavorites?.map(fav => (
+<div className={styled.container} >
+    <div className={styled.cards}>
+    {myFavorites.length?myFavorites.map(fav => 
                 <Card
+                key={fav.id}
                 name={fav.name}
                 id={fav.id}
-                key={fav.id}
                 gender={fav.gender}
                 image={fav.image}
+               
                 />
-            ))}
+            ): <h1>No hay favoritos</h1>}
+    </div>
+
+</div>
+         
         </div>
     )
 }
@@ -56,6 +65,7 @@ export function Favorites ({ myFavorites }){
 export function mapStateToProps(state){
     return {
         myFavorites: state.myFavorites
+    
     }
 }
 

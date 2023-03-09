@@ -18,9 +18,10 @@ function rootReducer (state=initialState, { type, payload }){
             }
         case DELETE_FAVORITE:
             const filtered = state.myFavorites.filter(
-                fav => fav.id !== payload)
+                (fav) => fav.id !== payload)
             return {
                 ...state,
+                allCharacters :filtered,
                 myFavorites: filtered
             }
         case FILTER:
@@ -50,7 +51,13 @@ function rootReducer (state=initialState, { type, payload }){
                 ...state,
                 myFavorites: order
             }
+        case "GET_FAVORITE":
 
+          return{
+            ...state,
+            allCharacters:payload,
+            myFavorites:payload
+          };
         default:
             return state
     }

@@ -5,25 +5,31 @@ import { useState,useEffect } from 'react';
 import { addFavorite,deleteFavorite } from '../redux/actions/actions';
 export  function Card(props) {
    const[isFav ,setIsFav] = useState(false);
+  
+
+  function handleFavorite(){
+if(isFav){
+ 
+ props.deleteFavorite(props.id)
+ setIsFav(false);
+}else{
+  props.addFavorite(props)
+ 
+   setIsFav(true);
+   
+ 
+}
+   }
    useEffect(() => {
+      console.log("props de card",props)
       props.myFavorites?.forEach((fav) => {
          if (fav.id === props.id) {
             setIsFav(true);
          }
       });
    }, [props.myFavorites]);
-  function handleFavorite(){
-if(isFav){
-   setIsFav(false);
- props.deleteFavorite(props.id)
-}else{
-   setIsFav(true);
-   props.addFavorite(props)
-   console.log(props)
-}
-   }
    return (
-      <div >
+      <div className={styles.card}>
         {
    isFav ? (
       <button onClick={handleFavorite}>❤️</button>
@@ -39,7 +45,11 @@ if(isFav){
       </div>
    );
 }
-
+export function mapStateToProps(state){
+   return{
+      myFavorites: state.myFavorites
+   }
+}
 export function mapDispatchToProps(dispatch){
 return{
    addFavorite: function(fav){
@@ -50,9 +60,5 @@ return{
    }
 }
 }
-export function mapStateToProps(state){
-   return{
-      myFavorites: state.myFavorites
-   }
-}
+
 export default connect(mapStateToProps,mapDispatchToProps)(Card);

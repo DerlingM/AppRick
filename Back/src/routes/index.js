@@ -3,8 +3,8 @@ const { Router } = require("express");
 
 const getCharById = require('../controllers/getCharById');
 const getCharDetail = require('../controllers/getCharDetail');
-const getFav = require('../controllers/getFav');
-const postFav = require('../controllers/postFav');
+const getFav = require('../controllers/getFav.js');
+const postFav = require('../controllers/postFav.js');
 const deleteFav = require('../controllers/deleteFav');
 const router = Router();
 

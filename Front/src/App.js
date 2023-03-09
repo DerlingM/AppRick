@@ -1,8 +1,6 @@
-import './App.css'
-import Card from './components/Card.jsx'
+
+
 import Cards from './components/Cards.jsx'
-import SearchBar from './components/SearchBar.jsx'
-import characters, { Rick } from './data.js'
 import Navbar from './components/Navbar/Navbar.jsx'
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
@@ -11,7 +9,6 @@ import Detail from './components/Detail/Detail'
 import Error from './components/Error/Error'
 import Form from './components/Form/Form'
 import { useLocation } from 'react-router-dom'
-import { Navigate } from 'react-router-dom'
 import Favorites from './components/favorites/Favorites.jsx'
 function App () {
   const imagenexterna = 'https://images2.alphacoders.com/692/692166.jpg';
@@ -54,12 +51,11 @@ useEffect(() => {
 }, [access]);
   return (
     
-  <div  className='App' style={{backgroundImage : `url(${imagenexterna})` ,backgroundRepeat: 'no-repeat',backgroundSize: 'cover', minHeight:'100%' ,padding: '25px' }}>
+  <div >
     {location.pathname !=='/' &&  < Navbar onSearch={onSearch}/>}
      <Routes>
-      <Route exact path='/' element={<Form login={login} /> } />
-    <Route path='/home' element={<Cards  characters={characters}
-          onClose={onClose}/>} />
+      <Route path='/' element={<Form login={login} /> } />
+    <Route path='/home' element={<Cards  characters={characters} onClose={onClose}/>} />
 <Route path='/about' element={<About/>} />
 <Route path='/favorites' element={<Favorites/>} />
 <Route path='/detail/:detailId' element={<Detail/>} />

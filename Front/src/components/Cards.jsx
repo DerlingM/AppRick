@@ -1,10 +1,13 @@
 import Card from './Card';
+import styles from './Cards.module.css'
 
 export default function Cards(props) {
    const { characters,onClose } = props;
    return(
-   <div style={{display: 'flex',justifyContent: 'space-around'} }>   
-{characters.map(char =><Card key={char.name}
+   <div className={styles.container}>   
+   <div className={styles.cards}>
+   {characters.map(char =>
+<Card key={char.name}
 name = {char.name}
 species = {char.species}
 gender = {char.gender}
@@ -13,6 +16,8 @@ onClose={()=>onClose(char.id)}
 id = {char.id}
 
 />)}
+   </div>
+
       </div>
       ) 
 }
