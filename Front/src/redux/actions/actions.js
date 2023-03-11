@@ -68,7 +68,7 @@ export function orderCards(id){
 export function getFavorites(){
     return async function(dispatch){
         try {
-            const character = await axios.get('http://localhost:3001/rickandmorty/fav')
+            const character = await axios.get('http://localhost:3001/rickandmorty/favorites')
         console.log("actions getfavorites",character)
             return dispatch({
             type : "GET_FAVORITE",

@@ -1,5 +1,5 @@
 let Favoritos = require('../utils/Favoritos')
-
+const {Favorite} = require('../DB_connection.js')
 /* app.delete('/rickandmorty/fav/:id',(req,res)=>{
     const {id} = req.params;
     if(!id){
@@ -34,8 +34,8 @@ let Favoritos = require('../utils/Favoritos')
         }
     }
 } */
-
-const deleteFav = (req, res) => {
+// esta manera sirve para eliminarlo en manera local
+/* const deleteFav = (req, res) => {
     const {id} = req.params;
     console.log(id)
     if(id){
@@ -45,6 +45,19 @@ const deleteFav = (req, res) => {
            return res.status(200).json(Favoritos)
     }
    return res.status(400).send("no hay nada")
+} */
+
+//elimina el favorito de la base de datos
+const deleteFav = async (req, res) => {
+   try {
+    const {id} = req.params;
+    const favoritedeleted= await Favorite.findByPk(id)
+    if(!favoritedeleted)  return res.status(404).json({message: `There is not character with id ${id}`})
+  favoritedeleted.destroy()
+  return res.status(200).json({message:'Favorite deleted successfully'})
+} catch (error) {
+    return res.status(404).json({message: error.message})
+   }
 }
 
 module.exports = deleteFav

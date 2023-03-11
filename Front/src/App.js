@@ -26,15 +26,23 @@ function login(userData){
  }
 }
 const onSearch = (character) =>{
-  fetch(`http://localhost:3001/rickandmorty/character/${character}`)
-      .then((response) => response.json())
-      .then((data) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            window.alert('No hay personajes con ese ID');
-         }
-      });
+
+    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
+        .then((response) => response.json())
+        .then((data) => {
+           if (data.name) {
+              setCharacters((oldChars) => [...oldChars, data]);
+              
+           } else {
+              window.alert('No hay personajes con ese ID');
+           }
+        });
+  
+
+
+  
+  
+
 }
 /* const example = {
   name: 'Morty Smith',
@@ -57,7 +65,7 @@ useEffect(() => {
       <Route path='/' element={<Form login={login} /> } />
     <Route path='/home' element={<Cards  characters={characters} onClose={onClose}/>} />
 <Route path='/about' element={<About/>} />
-<Route path='/favorites' element={<Favorites/>} />
+<Route path='/favorites' element={<Favorites characters={characters} onClose={onClose}/>} />
 <Route path='/detail/:detailId' element={<Detail/>} />
 <Route path='*' element={<Error/>}/>
 

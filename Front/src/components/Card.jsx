@@ -2,7 +2,8 @@ import styles from './Style/Style.module.css'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useState,useEffect } from 'react';
-import { addFavorite,deleteFavorite } from '../redux/actions/actions';
+import { addFavorite,deleteFavorite,getFavorites } from '../redux/actions/actions';
+import Favorites from './favorites/Favorites.jsx'
 export  function Card(props) {
    const[isFav ,setIsFav] = useState(false);
   
@@ -12,7 +13,9 @@ if(isFav){
  
  props.deleteFavorite(props.id)
  setIsFav(false);
+ getFavorites();
 }else{
+   console.log(props)
   props.addFavorite(props)
  
    setIsFav(true);
@@ -37,7 +40,9 @@ if(isFav){
       <button onClick={handleFavorite}>🤍</button>
    )
 }
-          <button onClick={()=> props.onClose(props.id)}>X</button>
+          <button  onClick={()=>{props.onClose(props.id)
+                                 props.deleteFavorite(props.id)
+         }} >X</button>
        <Link to={`/detail/${props.id}`} ><h2 className= {styles.Title} >{props.name}</h2></Link>  
          <h2 className={styles.text} >{props.species} </h2>
          <h2 className={styles.text} >{props.gender} </h2>

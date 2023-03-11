@@ -10,9 +10,11 @@ const getCharById = async (req, res) => {
       let character = {
         id:info.data.id,
         name:info.data.name,
+        status: info.data.status,
         image:info.data.image,
         gender:info.data.gender,
         species:info.data.species,
+        origin :info.data.origin
       };
       res.status(200).send(character);
     } catch (error) {

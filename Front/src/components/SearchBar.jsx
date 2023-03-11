@@ -7,6 +7,7 @@ const [character,setCharacter] = useState("")
 const handleChange = e =>{
    const {value} = e.target
 setCharacter(value)
+
 }
    return (
       <div className={style.content_buscador} >

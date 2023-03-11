@@ -28,12 +28,12 @@ console.log(myFavorites)
     return(
         <div className={styled.contain} >
             <div>
-                <select name='order' onClick={handleDispatch}>
+                <select name='order' onChange={handleDispatch}>
                     <option value="Ascendente">Ascendente</option>
                     <option value="Descendente">Descendente</option>
                 </select>
 
-                <select name='filter' onClick={handleDispatch}>
+                <select name='filter' onChange={handleDispatch}>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Genderless">Genderless</option>
@@ -50,7 +50,7 @@ console.log(myFavorites)
                 id={fav.id}
                 gender={fav.gender}
                 image={fav.image}
-               
+                onClose={()=>onClose(fav.id)}
                 />
             ): <h1>No hay favoritos</h1>}
     </div>

@@ -8,19 +8,19 @@
    );
    
    
-    background-image: url('../components/Images/Form.png');
+    background-image: url('../Images/Form.png');
     background-position: center;
     background-size: cover;
     min-height: 90.9vh;
     max-height: fit-content;
     padding-top: 60px;
-
+text-align: center;
 }
 
-.cards{
-    display: flex;
-    justify-content: center;
+.containertext{
+
+    
     flex-wrap: wrap;
     padding: 50px;
-    gap: 50px;
+   
 }
